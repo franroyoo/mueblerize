@@ -1,11 +1,42 @@
 {
   "version": 3,
   "targets": {
-    "net8.0-windows7.0": {}
+    "net8.0-windows7.0": {
+      "Bunifu.UI.WinForms.1.5.3/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net452/Bunifu.UI.WinForms.1.5.3.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net452/Bunifu.UI.WinForms.1.5.3.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Bunifu.UI.WinForms.1.5.3/2.0.0": {
+      "sha512": "GidpV+auLHFVvDLenFc23EZ+vXnxGo86+o7vCZVz8qwsePrvFsMxaBIcqs1GbIxCvvOXebje6miAy+B+Wpt+Ug==",
+      "type": "package",
+      "path": "bunifu.ui.winforms.1.5.3/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "bunifu.ui.winforms.1.5.3.2.0.0.nupkg.sha512",
+        "bunifu.ui.winforms.1.5.3.nuspec",
+        "lib/net452/Bunifu.UI.WinForms.1.5.3.dll",
+        "lib/net452/Bunifu.UI.WinForms.1.5.3.xml"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0-windows7.0": []
+    "net8.0-windows7.0": [
+      "Bunifu.UI.WinForms.1.5.3 >= 2.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Usuario\\.nuget\\packages\\": {}
@@ -50,6 +81,12 @@
     "frameworks": {
       "net8.0-windows7.0": {
         "targetAlias": "net8.0-windows",
+        "dependencies": {
+          "Bunifu.UI.WinForms.1.5.3": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -72,5 +109,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Bunifu.UI.WinForms.1.5.3 2.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Bunifu.UI.WinForms.1.5.3",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }

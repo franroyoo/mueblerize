@@ -19,3 +19,8 @@ C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\ref\Mueblerize
 C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.UserControls.UC_Clientes.resources
 C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.UserControls.UC_Ventas.resources
 C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.UserControls.UC_Inventario.resources
+C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.sourcelink.json
+C:\Users\Usuario\source\repos\Mueblerize\bin\Debug\net8.0-windows\Bunifu.UI.WinForms.1.5.3.dll
+C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.csproj.AssemblyReference.cache
+C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.csproj.Up2Date
+C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.FormNuevoCliente.resources
