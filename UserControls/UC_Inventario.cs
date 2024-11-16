@@ -16,5 +16,11 @@ namespace Mueblerize.UserControls
         {
             InitializeComponent();
         }
+
+        private void buttonNuevoIngreso_Click(object sender, EventArgs e)
+        {
+            FormNuevoIngreso formNuevoIngreso = new FormNuevoIngreso();
+            formNuevoIngreso.Show();
+        }
     }
 }

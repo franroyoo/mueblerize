@@ -1,4 +1,4 @@
-namespace Mueblerize
+namespace Mueblerize.Modelo
 {
     internal static class Program
     {

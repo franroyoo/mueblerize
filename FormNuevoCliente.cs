@@ -1,4 +1,5 @@
-﻿using Mueblerize.UserControls;
+﻿using Mueblerize.Modelo;
+using Mueblerize.UserControls;
 using System;
 using System.Windows.Forms;
 
@@ -12,9 +13,10 @@ namespace Mueblerize
             InitializeComponent();
         }
 
-        // Agregar cliente
+        // Boton "AGREGAR CLIENTE"
         private void button1_Click(object sender, EventArgs e)
         {
+            // Sacando los espacios en blanco
             string nombre = textBoxNombre.Text.Trim();
             string apellido = textBoxApellido.Text.Trim();
             string dni = textBoxDNI.Text.Trim();
@@ -26,22 +28,36 @@ namespace Mueblerize
             if (SonDatosValidos(nombre, apellido, dni, edadTexto, telefono, direccion, email))
             {
                 int edad = int.Parse(edadTexto);
-                Cliente cliente = new Cliente(nombre, apellido, dni, edad, telefono, direccion, email, GenerarNumeroCliente(), DateTime.Now);
 
-                // Comunicarse con la referencia al UserControl de Cliente
-                ReferenciaUC_Clientes.AgregarClienteDataGridView(cliente);
+                // Comunicarse con la referencia al UserControl de Cliente y chequear si el cliente ya existe en la lista (DNI debe ser único)
 
-                // Cerrar FormNuevoCliente
-                this.Close();
+                if (ReferenciaUC_Clientes.ExisteClienteEnListaConDNI(dni))
+                {
+                    MessageBox.Show($"El cliente ya se encuentra registrado en el sistema", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }else
+                {
+                    // Creo el nuevo cliente a agregar
+
+                    Cliente cliente = new Cliente(nombre, apellido, dni, edad, telefono, direccion, email, GenerarNumeroCliente(), DateTime.Now);
+
+                    // Comunicarse con la referencia al UserControl de Cliente (pasar el nuevo cliente instanciado al DataGridView)
+
+                    ReferenciaUC_Clientes.AgregarClienteDataGridView(cliente);
+
+                    // Cerrar FormNuevoCliente
+
+                    this.Close();
+                }
             }
         }
 
         private int GenerarNumeroCliente()
         {
             Random random = new Random();
-            return random.Next(1000, 10000);
+            return random.Next(1000, 100000);
         }
 
+        // Función para chequear que los datos sean VÁLIDOS
         private bool SonDatosValidos(string nombre, string apellido, string dni, string edadTexto, string telefono, string direccion, string email)
         {
             try
@@ -62,6 +78,7 @@ namespace Mueblerize
             return true;
         }
 
+        // Condiciones para que los campos sean VÁLIDOS
         private bool EsNombreValido(string nombre) => nombre.Length >= 3 && nombre.Length <= 25;
 
         private bool EsApellidoValido(string nombre) => nombre.Length >= 3 && nombre.Length <=25;
@@ -75,7 +92,7 @@ namespace Mueblerize
             }
             else
             {
-                throw new Exception("Error en el campo EDAD: debe ser un número válido");
+                throw new Exception("Error en el campo EDAD: debe ser una edad válida (18 a 99 años)");
             }
         }
 

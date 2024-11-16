@@ -24,3 +24,4 @@ C:\Users\Usuario\source\repos\Mueblerize\bin\Debug\net8.0-windows\Bunifu.UI.WinF
 C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.csproj.AssemblyReference.cache
 C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.csproj.Up2Date
 C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.FormNuevoCliente.resources
+C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.FormNuevoIngreso.resources

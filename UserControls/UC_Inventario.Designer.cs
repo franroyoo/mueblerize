@@ -30,7 +30,7 @@
         {
             labelInventario = new Label();
             labelAccionesInventario = new Label();
-            buttonNuevoMueble = new Button();
+            buttonNuevoIngreso = new Button();
             buttonModificarDatosMueble = new Button();
             buttonEliminarMueble = new Button();
             dataGridViewInventario = new DataGridView();
@@ -44,9 +44,9 @@
             labelInventario.ForeColor = Color.FromArgb(64, 38, 36);
             labelInventario.Location = new Point(502, 30);
             labelInventario.Name = "labelInventario";
-            labelInventario.Size = new Size(241, 61);
+            labelInventario.Size = new Size(202, 61);
             labelInventario.TabIndex = 5;
-            labelInventario.Text = "INVENTARIO";
+            labelInventario.Text = "MUEBLES";
             // 
             // labelAccionesInventario
             // 
@@ -59,17 +59,18 @@
             labelAccionesInventario.TabIndex = 11;
             labelAccionesInventario.Text = "PANEL DE ACCIONES";
             // 
-            // buttonNuevoMueble
+            // buttonNuevoIngreso
             // 
-            buttonNuevoMueble.BackColor = Color.Tan;
-            buttonNuevoMueble.FlatStyle = FlatStyle.Flat;
-            buttonNuevoMueble.Font = new Font("Franklin Gothic Medium Cond", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonNuevoMueble.Location = new Point(1449, 197);
-            buttonNuevoMueble.Name = "buttonNuevoMueble";
-            buttonNuevoMueble.Size = new Size(287, 112);
-            buttonNuevoMueble.TabIndex = 12;
-            buttonNuevoMueble.Text = "NUEVO MUEBLE";
-            buttonNuevoMueble.UseVisualStyleBackColor = false;
+            buttonNuevoIngreso.BackColor = Color.Tan;
+            buttonNuevoIngreso.FlatStyle = FlatStyle.Flat;
+            buttonNuevoIngreso.Font = new Font("Franklin Gothic Medium Cond", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonNuevoIngreso.Location = new Point(1449, 197);
+            buttonNuevoIngreso.Name = "buttonNuevoIngreso";
+            buttonNuevoIngreso.Size = new Size(287, 112);
+            buttonNuevoIngreso.TabIndex = 12;
+            buttonNuevoIngreso.Text = "REGISTRAR NUEVO INGRESO";
+            buttonNuevoIngreso.UseVisualStyleBackColor = false;
+            buttonNuevoIngreso.Click += buttonNuevoIngreso_Click;
             // 
             // buttonModificarDatosMueble
             // 
@@ -80,7 +81,7 @@
             buttonModificarDatosMueble.Name = "buttonModificarDatosMueble";
             buttonModificarDatosMueble.Size = new Size(287, 112);
             buttonModificarDatosMueble.TabIndex = 13;
-            buttonModificarDatosMueble.Text = "MODIFICAR DATOS MUEBLE";
+            buttonModificarDatosMueble.Text = "MODIFICAR PRECIOS";
             buttonModificarDatosMueble.UseVisualStyleBackColor = false;
             // 
             // buttonEliminarMueble
@@ -110,7 +111,7 @@
             BackColor = Color.AntiqueWhite;
             Controls.Add(buttonEliminarMueble);
             Controls.Add(buttonModificarDatosMueble);
-            Controls.Add(buttonNuevoMueble);
+            Controls.Add(buttonNuevoIngreso);
             Controls.Add(labelAccionesInventario);
             Controls.Add(labelInventario);
             Controls.Add(dataGridViewInventario);
@@ -124,7 +125,7 @@
         #endregion
         private Label labelInventario;
         private Label labelAccionesInventario;
-        private Button buttonNuevoMueble;
+        private Button buttonNuevoIngreso;
         private Button buttonModificarDatosMueble;
         private Button buttonEliminarMueble;
         private DataGridView dataGridViewInventario;

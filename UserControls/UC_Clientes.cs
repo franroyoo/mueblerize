@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Mueblerize.Modelo;
 
 namespace Mueblerize.UserControls
 {
@@ -29,6 +30,10 @@ namespace Mueblerize.UserControls
             dataGridViewClientes.DataSource = clientes;
         }
 
+        public bool ExisteClienteEnListaConDNI(string DNI) 
+        {
+            return clientes.Exists(cliente => cliente.DNI.Equals(DNI));
+        }
 
         private void buttonNuevoCliente_Click(object sender, EventArgs e)
         {

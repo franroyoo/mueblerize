@@ -7,6 +7,9 @@
     <Compile Update="FormNuevoCliente.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormNuevoIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="UserControls\UC_Clientes.cs">
       <SubType>UserControl</SubType>
     </Compile>

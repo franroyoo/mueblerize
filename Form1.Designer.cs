@@ -85,7 +85,7 @@
             button4.Name = "button4";
             button4.Size = new Size(474, 71);
             button4.TabIndex = 3;
-            button4.Text = "INVENTARIO";
+            button4.Text = "MUEBLES";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
