@@ -1,4 +1,5 @@
 ﻿using Mueblerize.Modelo;
+using Mueblerize.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,8 @@ namespace Mueblerize
 {
     public partial class FormNuevoIngreso : Form
     {
-        List<ItemInventario> itemsInventario = new List<ItemInventario> ();
+        public List<ItemInventario> itemsInventario = new List<ItemInventario>();
+        public UC_Inventario ReferenciaUC_Inventario { get; set; }
         public FormNuevoIngreso()
         {
             InitializeComponent();
@@ -37,17 +39,7 @@ namespace Mueblerize
                 UseColumnTextForButtonValue = true
             };
 
-            DataGridViewButtonColumn btnModificar = new DataGridViewButtonColumn
-            {
-                Name = "btnModificar",
-                HeaderText = "Modificar",
-                Text = "Modificar",
-                UseColumnTextForButtonValue = true
-            };
-
             dataGridViewIngreso.Columns.Add(btnEliminar);
-            dataGridViewIngreso.Columns.Add(btnModificar);
-
 
         }
 
@@ -60,7 +52,23 @@ namespace Mueblerize
 
         private void dataGridViewIngreso_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                if (dataGridViewIngreso.Columns[e.ColumnIndex].Name == "btnEliminar")
+                {
+                    var confirmarResultado = MessageBox.Show("¿Eliminar item?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                    if (confirmarResultado == DialogResult.Yes)
+                    {
+                        // Eliminar item de la lista 
+                        itemsInventario.Remove(itemsInventario[e.RowIndex]);
+
+                        // Eliminar item del DataGridView
+                        dataGridViewIngreso.Rows.RemoveAt(e.RowIndex);
+
+                    }
+                }
+            }
         }
 
         // Botón Agregar ITEM
@@ -68,47 +76,55 @@ namespace Mueblerize
         {
             if (SonDatosValidos())
             {
-                // Agregar ITEM al DataGridView
+                // Obtener las selecciones del usuario
 
                 string tipoMuebleText = comboBoxTipoMueble.SelectedItem as string;
                 string tipoMaderaText = comboBoxTipoMadera.SelectedItem as string;
                 string cantidadItemText = textBoxCantidadItem.Text;
 
 
-                // Convertir a ENUM a partir de texto
+                // Convertir a ENUM a partir de texto el tipo de mueble y el tipo de madera
 
                 Enum.TryParse(tipoMuebleText, true, out TipoMueble tipoMueble);
                 Enum.TryParse(tipoMaderaText, true, out TipoMadera tipoMadera);
 
-                
+
                 int cantidadItem = int.Parse(cantidadItemText);
+
+                // Crear el item de inventario
                 ItemInventario itemInventario = new ItemInventario(new Mueble(tipoMueble, tipoMadera), cantidadItem);
 
-
-
-                ItemInventario itemEncontrado = itemsInventario.Find(item => item.Mueble.Tipo.ToString().Equals(tipoMuebleText) && item.Mueble.Madera.ToString().Equals(tipoMaderaText));
+                var itemEncontrado = itemsInventario.Find(item => item.Mueble.Tipo.ToString().Equals(tipoMuebleText) && item.Mueble.Madera.ToString().Equals(tipoMaderaText));
 
                 // Si el item encontrado es distinto de null significa que el item ya esta en la lista y solo queda actualizar su cantidad
                 if (itemEncontrado != null)
                 {
-                    itemEncontrado.CantidadEnInventario += cantidadItem;
+                    // Si la cantidad a actualizar supera 200 entonces no agregarlo y mostrar error
+                    if (itemEncontrado.CantidadEnInventario + cantidadItem > 200)
+                    {
+                        MessageBox.Show("ERROR: La cantidad resultante de este item para este ingreso resulta mayor a 200", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }else
+                    {
+                        itemEncontrado.CantidadEnInventario += cantidadItem;
 
-                    // TODO: Actualizar DataGridView donde Row(i) == item.GetIndex()
-                    int index = itemsInventario.IndexOf(itemEncontrado);
+                        int index = itemsInventario.IndexOf(itemEncontrado);
 
-                    dataGridViewIngreso.Rows[index].Cells[2].Value = itemEncontrado.CantidadEnInventario.ToString();
-                    return;
+                        dataGridViewIngreso.Rows[index].Cells[2].Value = itemEncontrado.CantidadEnInventario.ToString();
+    
+                    }
+
+                }else
+                {
+                    // El item NO EXISTE TODAVIA en la lista y lo agrego
+                    itemsInventario.Add(itemInventario);
+                    dataGridViewIngreso.Rows.Add(tipoMuebleText, tipoMaderaText, cantidadItemText);
                 }
-
-          
-                // El item NO EXISTE TODAVIA en la lista y lo agrego
-                itemsInventario.Add(itemInventario);
-                dataGridViewIngreso.Rows.Add(tipoMuebleText, tipoMaderaText, cantidadItemText);
 
             }
 
         }
 
+        // Validacion
         private bool SonDatosValidos()
         {
             string mensajeError;
@@ -121,7 +137,7 @@ namespace Mueblerize
 
                 int cantidadItem = int.Parse(textBoxCantidadItem.Text);
 
-                if (cantidadItem <= 0 || cantidadItem > 100) throw new Exception("ERROR: El rango numérico de la cantidad es inválido (1-100)");
+                if (cantidadItem <= 0 || cantidadItem > 200) throw new Exception("ERROR: El rango numérico de la cantidad es inválido (1-200)");
 
                 return true;
             }
@@ -140,6 +156,43 @@ namespace Mueblerize
 
                 return false;
             }
+        }
+
+        private void FormNuevoIngreso_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
+
+        private void buttonRegistrarIngreso_Click(object sender, EventArgs e)
+        {
+            var confirmarRegistrarIngreso = MessageBox.Show("¿Confirmar nuevo ingreso de muebles?", "Confirmar ingreso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmarRegistrarIngreso == DialogResult.Yes)
+            {
+                // Agregar la lista de ItemInventario a Inventario en el UC_Inventario
+
+                ReferenciaUC_Inventario.AgregarNuevosMueblesAInventario(itemsInventario);
+
+                // Ya hice el ingreso, simplemente elimino los items (ya no los necesito) y cierro el form
+                itemsInventario.Clear();
+                this.Close();
+            }
+
+                
+        }
+
+        private void FormNuevoIngreso_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+
+            //var confirmarResultadoCerrarForm = MessageBox.Show("¿Desea cancelar el registro de ingreso? los datos ingresados se perderan.", "Cerrar ventana", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            //if (confirmarResultadoCerrarForm == DialogResult.Yes)
+            //{
+            //    // Vaciar la lista, se cancela el nuevo ingreso
+            //    itemsInventario.Clear();
+            //}
+            //else e.Cancel = true;
         }
     }
 }

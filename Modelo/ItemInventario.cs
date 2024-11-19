@@ -15,6 +15,5 @@ namespace Mueblerize.Modelo
             Mueble = mueble;
             CantidadEnInventario = cantidadEnInventario;
         }
-
     }
 }

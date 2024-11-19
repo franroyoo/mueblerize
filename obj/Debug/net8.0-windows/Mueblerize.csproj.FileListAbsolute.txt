@@ -25,3 +25,5 @@ C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.csp
 C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.csproj.Up2Date
 C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.FormNuevoCliente.resources
 C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.FormNuevoIngreso.resources
+C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.FormModificarPrecios.resources
+C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.FormNuevaVenta.resources

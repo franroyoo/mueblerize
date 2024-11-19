@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             comboBoxTipoMueble = new ComboBox();
             comboBoxTipoMadera = new ComboBox();
             textBoxCantidadItem = new TextBox();
@@ -120,19 +120,19 @@
             dataGridViewIngreso.AllowUserToDeleteRows = false;
             dataGridViewIngreso.AllowUserToResizeColumns = false;
             dataGridViewIngreso.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.Bisque;
-            dataGridViewIngreso.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.Bisque;
+            dataGridViewIngreso.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewIngreso.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewIngreso.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewIngreso.BackgroundColor = Color.Bisque;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Bisque;
-            dataGridViewCellStyle5.Font = new Font("Franklin Gothic Medium Cond", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.Bisque;
-            dataGridViewCellStyle5.SelectionForeColor = Color.Bisque;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridViewIngreso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Bisque;
+            dataGridViewCellStyle2.Font = new Font("Franklin Gothic Medium Cond", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Bisque;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Bisque;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewIngreso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewIngreso.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewIngreso.EditMode = DataGridViewEditMode.EditProgrammatically;
             dataGridViewIngreso.EnableHeadersVisualStyles = false;
@@ -142,14 +142,14 @@
             dataGridViewIngreso.MultiSelect = false;
             dataGridViewIngreso.Name = "dataGridViewIngreso";
             dataGridViewIngreso.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.Bisque;
-            dataGridViewCellStyle6.Font = new Font("Franklin Gothic Medium Cond", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridViewIngreso.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Bisque;
+            dataGridViewCellStyle3.Font = new Font("Franklin Gothic Medium Cond", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewIngreso.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewIngreso.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewIngreso.Size = new Size(598, 479);
             dataGridViewIngreso.TabIndex = 16;
@@ -179,6 +179,7 @@
             buttonRegistrarIngreso.TabIndex = 18;
             buttonRegistrarIngreso.Text = "REGISTRAR INGRESO";
             buttonRegistrarIngreso.UseVisualStyleBackColor = false;
+            buttonRegistrarIngreso.Click += buttonRegistrarIngreso_Click;
             // 
             // FormNuevoIngreso
             // 
@@ -198,6 +199,8 @@
             Name = "FormNuevoIngreso";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Nuevo ingreso";
+            FormClosing += FormNuevoIngreso_FormClosing;
+            FormClosed += FormNuevoIngreso_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dataGridViewIngreso).EndInit();
             ResumeLayout(false);
             PerformLayout();

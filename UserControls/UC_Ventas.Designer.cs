@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             labelVentas = new Label();
-            dataGridViewVentas = new DataGridView();
             buttonNuevaVenta = new Button();
             labelAccionesVenta = new Label();
+            dataGridViewVentas = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridViewVentas).BeginInit();
             SuspendLayout();
             // 
@@ -46,15 +49,6 @@
             labelVentas.TabIndex = 4;
             labelVentas.Text = "VENTAS";
             // 
-            // dataGridViewVentas
-            // 
-            dataGridViewVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewVentas.Location = new Point(141, 112);
-            dataGridViewVentas.Name = "dataGridViewVentas";
-            dataGridViewVentas.Size = new Size(1016, 694);
-            dataGridViewVentas.TabIndex = 3;
-            dataGridViewVentas.CellContentClick += dataGridView1_CellContentClick;
-            // 
             // buttonNuevaVenta
             // 
             buttonNuevaVenta.BackColor = Color.Tan;
@@ -66,6 +60,7 @@
             buttonNuevaVenta.TabIndex = 16;
             buttonNuevaVenta.Text = "NUEVA VENTA";
             buttonNuevaVenta.UseVisualStyleBackColor = false;
+            buttonNuevaVenta.Click += buttonNuevaVenta_Click;
             // 
             // labelAccionesVenta
             // 
@@ -78,15 +73,55 @@
             labelAccionesVenta.TabIndex = 15;
             labelAccionesVenta.Text = "PANEL DE ACCIONES";
             // 
+            // dataGridViewVentas
+            // 
+            dataGridViewVentas.AllowUserToAddRows = false;
+            dataGridViewVentas.AllowUserToDeleteRows = false;
+            dataGridViewVentas.AllowUserToResizeColumns = false;
+            dataGridViewVentas.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.Bisque;
+            dataGridViewVentas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewVentas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewVentas.BackgroundColor = Color.Bisque;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Bisque;
+            dataGridViewCellStyle2.Font = new Font("Franklin Gothic Medium Cond", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Bisque;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Bisque;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewVentas.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridViewVentas.EnableHeadersVisualStyles = false;
+            dataGridViewVentas.GridColor = Color.Black;
+            dataGridViewVentas.ImeMode = ImeMode.Off;
+            dataGridViewVentas.Location = new Point(141, 112);
+            dataGridViewVentas.MultiSelect = false;
+            dataGridViewVentas.Name = "dataGridViewVentas";
+            dataGridViewVentas.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Bisque;
+            dataGridViewCellStyle3.Font = new Font("Franklin Gothic Medium Cond", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewVentas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewVentas.Size = new Size(1016, 694);
+            dataGridViewVentas.TabIndex = 17;
+            // 
             // UC_Ventas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AntiqueWhite;
+            Controls.Add(dataGridViewVentas);
             Controls.Add(buttonNuevaVenta);
             Controls.Add(labelAccionesVenta);
             Controls.Add(labelVentas);
-            Controls.Add(dataGridViewVentas);
             Name = "UC_Ventas";
             Size = new Size(1924, 901);
             ((System.ComponentModel.ISupportInitialize)dataGridViewVentas).EndInit();
@@ -97,8 +132,8 @@
         #endregion
 
         private Label labelVentas;
-        private DataGridView dataGridViewVentas;
         private Button buttonNuevaVenta;
         private Label labelAccionesVenta;
+        private DataGridView dataGridViewVentas;
     }
 }

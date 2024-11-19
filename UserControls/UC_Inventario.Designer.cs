@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             labelInventario = new Label();
             labelAccionesInventario = new Label();
             buttonNuevoIngreso = new Button();
             buttonModificarDatosMueble = new Button();
-            buttonEliminarMueble = new Button();
-            dataGridViewInventario = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewInventario).BeginInit();
+            dataGridViewMuebles = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMuebles).BeginInit();
             SuspendLayout();
             // 
             // labelInventario
@@ -44,9 +46,9 @@
             labelInventario.ForeColor = Color.FromArgb(64, 38, 36);
             labelInventario.Location = new Point(502, 30);
             labelInventario.Name = "labelInventario";
-            labelInventario.Size = new Size(202, 61);
+            labelInventario.Size = new Size(241, 61);
             labelInventario.TabIndex = 5;
-            labelInventario.Text = "MUEBLES";
+            labelInventario.Text = "INVENTARIO";
             // 
             // labelAccionesInventario
             // 
@@ -83,41 +85,62 @@
             buttonModificarDatosMueble.TabIndex = 13;
             buttonModificarDatosMueble.Text = "MODIFICAR PRECIOS";
             buttonModificarDatosMueble.UseVisualStyleBackColor = false;
+            buttonModificarDatosMueble.Click += buttonModificarDatosMueble_Click;
             // 
-            // buttonEliminarMueble
+            // dataGridViewMuebles
             // 
-            buttonEliminarMueble.BackColor = Color.Tan;
-            buttonEliminarMueble.FlatStyle = FlatStyle.Flat;
-            buttonEliminarMueble.Font = new Font("Franklin Gothic Medium Cond", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonEliminarMueble.Location = new Point(1449, 536);
-            buttonEliminarMueble.Name = "buttonEliminarMueble";
-            buttonEliminarMueble.Size = new Size(287, 112);
-            buttonEliminarMueble.TabIndex = 14;
-            buttonEliminarMueble.Text = "ELIMINAR MUEBLE";
-            buttonEliminarMueble.UseVisualStyleBackColor = false;
-            // 
-            // dataGridViewInventario
-            // 
-            dataGridViewInventario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewInventario.Location = new Point(141, 112);
-            dataGridViewInventario.Name = "dataGridViewInventario";
-            dataGridViewInventario.Size = new Size(1016, 694);
-            dataGridViewInventario.TabIndex = 4;
+            dataGridViewMuebles.AllowUserToAddRows = false;
+            dataGridViewMuebles.AllowUserToDeleteRows = false;
+            dataGridViewMuebles.AllowUserToResizeColumns = false;
+            dataGridViewMuebles.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.Bisque;
+            dataGridViewMuebles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewMuebles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewMuebles.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewMuebles.BackgroundColor = Color.Bisque;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Bisque;
+            dataGridViewCellStyle2.Font = new Font("Franklin Gothic Medium Cond", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Bisque;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Bisque;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewMuebles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewMuebles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewMuebles.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridViewMuebles.EnableHeadersVisualStyles = false;
+            dataGridViewMuebles.GridColor = Color.Black;
+            dataGridViewMuebles.ImeMode = ImeMode.Off;
+            dataGridViewMuebles.Location = new Point(141, 112);
+            dataGridViewMuebles.MultiSelect = false;
+            dataGridViewMuebles.Name = "dataGridViewMuebles";
+            dataGridViewMuebles.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Bisque;
+            dataGridViewCellStyle3.Font = new Font("Franklin Gothic Medium Cond", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewMuebles.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewMuebles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewMuebles.Size = new Size(1016, 694);
+            dataGridViewMuebles.TabIndex = 16;
+            dataGridViewMuebles.CellClick += dataGridViewMuebles_CellClick;
             // 
             // UC_Inventario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AntiqueWhite;
-            Controls.Add(buttonEliminarMueble);
+            Controls.Add(dataGridViewMuebles);
             Controls.Add(buttonModificarDatosMueble);
             Controls.Add(buttonNuevoIngreso);
             Controls.Add(labelAccionesInventario);
             Controls.Add(labelInventario);
-            Controls.Add(dataGridViewInventario);
             Name = "UC_Inventario";
             Size = new Size(1924, 901);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewInventario).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMuebles).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -127,7 +150,6 @@
         private Label labelAccionesInventario;
         private Button buttonNuevoIngreso;
         private Button buttonModificarDatosMueble;
-        private Button buttonEliminarMueble;
-        private DataGridView dataGridViewInventario;
+        private DataGridView dataGridViewMuebles;
     }
 }

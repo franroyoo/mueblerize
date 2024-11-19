@@ -6,9 +6,14 @@ namespace Mueblerize
     {
         private static int DEFAULT_FONT_SIZE = 18;
         private static int HOVERED_FONT_SIZE = 22;
+        public UC_Clientes UC_Clientes {get;set; } = new UC_Clientes();
+        public UC_Ventas UC_Ventas {get;set; }
+        public UC_Inventario UC_Inventario { get; set; } = new UC_Inventario();
         public Form1()
         {
             InitializeComponent();
+
+            UC_Ventas = new UC_Ventas(UC_Inventario, UC_Clientes);
             UC_Inicio inicio = new UC_Inicio();
             AgregarUserControl(inicio);
         }
@@ -51,8 +56,8 @@ namespace Mueblerize
         {
             ActualizarUIBotonesPrincipales();
             button2.Font = new Font(button2.Font.FontFamily,HOVERED_FONT_SIZE, FontStyle.Bold);
-            UC_Clientes clientes = new UC_Clientes();
-            AgregarUserControl(clientes);
+            //UC_Clientes clientes = new UC_Clientes();
+            AgregarUserControl(UC_Clientes);
         }
 
         // Ventas
@@ -60,8 +65,8 @@ namespace Mueblerize
         {
             ActualizarUIBotonesPrincipales();
             button3.Font = new Font(button3.Font.FontFamily, HOVERED_FONT_SIZE, FontStyle.Bold);
-            UC_Ventas ventas = new UC_Ventas();
-            AgregarUserControl(ventas);
+            //UC_Ventas ventas = new UC_Ventas();
+            AgregarUserControl(UC_Ventas);
         }
 
         // Inventario
@@ -69,8 +74,8 @@ namespace Mueblerize
         {
             ActualizarUIBotonesPrincipales();
             button4.Font = new Font(button4.Font.FontFamily,HOVERED_FONT_SIZE, FontStyle.Bold);
-            UC_Inventario inventario = new UC_Inventario();
-            AgregarUserControl(inventario);
+            //UC_Inventario inventario = new UC_Inventario();
+            AgregarUserControl(UC_Inventario);
         }
     }
 }
