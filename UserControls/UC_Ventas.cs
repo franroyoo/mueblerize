@@ -15,6 +15,8 @@ namespace Mueblerize.UserControls
     {
         public UC_Inventario UC_Inventario { get; set; }
         public UC_Clientes UC_Clientes { get; set; }
+
+        public List<Venta> Ventas { get; set; } = new List<Venta>();
         public UC_Ventas(UC_Inventario UC_Inventario, UC_Clientes UC_Clientes)
         {
 
@@ -36,7 +38,7 @@ namespace Mueblerize.UserControls
             {
                 Name = "btnVerDetalles",
                 HeaderText = "Ver detalles",
-                Text = "Ver detalles",
+                Text = "VER DETALLES",
                 UseColumnTextForButtonValue = true
             };
 
@@ -48,9 +50,15 @@ namespace Mueblerize.UserControls
 
         }
 
+
+
         public void AgregarNuevaVentaDataGridView(Venta venta)
         {
             dataGridViewVentas.Rows.Add(venta.Cliente.Nombre, venta.Cliente.Apellido, venta.Cliente.DNI, venta.Fecha);
+
+            // Agregar venta a la lista de ventas
+
+            this.Ventas.Add(venta);
         }
 
         private void buttonNuevaVenta_Click(object sender, EventArgs e)
@@ -58,6 +66,27 @@ namespace Mueblerize.UserControls
             FormNuevaVenta formNuevaVenta = new FormNuevaVenta(UC_Inventario, UC_Clientes);
             formNuevaVenta.ReferenciaUC_Ventas = this;
             formNuevaVenta.Show();
+        }
+
+        // Evento que se dispara para "Ver detalles"
+        private void dataGridViewVentas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (dataGridViewVentas.Columns[e.ColumnIndex].Name == "btnVerDetalles")
+                {
+                    // Obtengo la fecha de venta (unica para cada venta)
+                    var fechaVenta = dataGridViewVentas.Rows[e.RowIndex].Cells["FechaVenta"].Value;
+
+                    // Buscar venta que corresponda con esa fecha en mi lista de ventas
+
+                    var ventaParaMostrarDetalles = Ventas.Find(venta => venta.Fecha.Equals(fechaVenta));
+
+                    // Crear el form para ver los detalles de la venta y pasarle al constructor una referencia a este UserControl (UC_Ventas)
+                    FormVerDetallesVenta formVerDetallesVenta = new FormVerDetallesVenta(ventaParaMostrarDetalles);
+                    formVerDetallesVenta.Show();
+                }
+            }
         }
     }
 }

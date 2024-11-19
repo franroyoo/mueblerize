@@ -31,38 +31,12 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            buttonEliminarCliente = new Button();
-            buttonModificarDatosCliente = new Button();
             buttonNuevoCliente = new Button();
             labelAccionesCliente = new Label();
             labelClientes = new Label();
             dataGridViewClientes = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridViewClientes).BeginInit();
             SuspendLayout();
-            // 
-            // buttonEliminarCliente
-            // 
-            buttonEliminarCliente.BackColor = Color.Tan;
-            buttonEliminarCliente.FlatStyle = FlatStyle.Flat;
-            buttonEliminarCliente.Font = new Font("Franklin Gothic Medium Cond", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonEliminarCliente.Location = new Point(1449, 536);
-            buttonEliminarCliente.Name = "buttonEliminarCliente";
-            buttonEliminarCliente.Size = new Size(287, 112);
-            buttonEliminarCliente.TabIndex = 20;
-            buttonEliminarCliente.Text = "ELIMINAR CLIENTE";
-            buttonEliminarCliente.UseVisualStyleBackColor = false;
-            // 
-            // buttonModificarDatosCliente
-            // 
-            buttonModificarDatosCliente.BackColor = Color.Tan;
-            buttonModificarDatosCliente.FlatStyle = FlatStyle.Flat;
-            buttonModificarDatosCliente.Font = new Font("Franklin Gothic Medium Cond", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonModificarDatosCliente.Location = new Point(1449, 369);
-            buttonModificarDatosCliente.Name = "buttonModificarDatosCliente";
-            buttonModificarDatosCliente.Size = new Size(287, 112);
-            buttonModificarDatosCliente.TabIndex = 19;
-            buttonModificarDatosCliente.Text = "MODIFICAR DATOS CLIENTE";
-            buttonModificarDatosCliente.UseVisualStyleBackColor = false;
             // 
             // buttonNuevoCliente
             // 
@@ -144,8 +118,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AntiqueWhite;
-            Controls.Add(buttonEliminarCliente);
-            Controls.Add(buttonModificarDatosCliente);
             Controls.Add(buttonNuevoCliente);
             Controls.Add(labelAccionesCliente);
             Controls.Add(labelClientes);
@@ -159,9 +131,6 @@
         }
 
         #endregion
-
-        private Button buttonEliminarCliente;
-        private Button buttonModificarDatosCliente;
         private Button buttonNuevoCliente;
         private Label labelAccionesCliente;
         private Label labelClientes;

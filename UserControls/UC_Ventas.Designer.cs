@@ -112,6 +112,7 @@
             dataGridViewVentas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewVentas.Size = new Size(1016, 694);
             dataGridViewVentas.TabIndex = 17;
+            dataGridViewVentas.CellClick += dataGridViewVentas_CellClick;
             // 
             // UC_Ventas
             // 

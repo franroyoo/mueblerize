@@ -46,7 +46,7 @@ namespace Mueblerize
             {
                 Name = "btnEliminar",
                 HeaderText = "Eliminar",
-                Text = "Eliminar",
+                Text = "ELIMINAR",
                 UseColumnTextForButtonValue = true
             };
 
@@ -60,7 +60,7 @@ namespace Mueblerize
 
             PreciosTipoMueble = UC_Inventario.diccionarioPrecioTipoMueble;
             PreciosTipoMadera = UC_Inventario.diccionarioPrecioTipoMadera;
-            
+
         }
 
         private void buttonAgregarItemVenta_Click(object sender, EventArgs e)
@@ -135,7 +135,7 @@ namespace Mueblerize
                 if (comboBoxTipoMaderaVenta.SelectedItem == null) throw new Exception("ERROR: Debe indicar el tipo de madera");
 
 
-                
+
 
                 int cantidadItem = int.Parse(textBoxCantidadItemVenta.Text);
 
@@ -164,8 +164,12 @@ namespace Mueblerize
 
         private void buttonRegistrarVenta_Click(object sender, EventArgs e)
         {
+
+
+
             try
             {
+                if (itemsSeleccionadosUsuario.Count == 0) throw new Exception("ERROR: No se ha seleccionado ningun mueble para vender");
                 if (!UC_Clientes.ExisteClienteEnListaConDNI(textBoxDniClienteVenta.Text)) throw new Exception("ERROR: El cliente no existe en el sistema, por favor registrelo primero");
 
                 // Armar objeto Venta y ponerlo en el datagridview de ventas
@@ -184,7 +188,28 @@ namespace Mueblerize
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "CLIENTE NO EXISTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridViewMueblesVenta_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (dataGridViewMueblesVenta.Columns[e.ColumnIndex].Name == "btnEliminar")
+                {
+                    var confirmarResultado = MessageBox.Show("¿Eliminar item?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (confirmarResultado == DialogResult.Yes)
+                    {
+                        // Eliminar item de la lista 
+                        itemsSeleccionadosUsuario.Remove(itemsSeleccionadosUsuario[e.RowIndex]);
+
+                        // Eliminar item del DataGridView
+                        dataGridViewMueblesVenta.Rows.RemoveAt(e.RowIndex);
+
+                    }
+                }
             }
         }
     }

@@ -27,3 +27,4 @@ C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.For
 C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.FormNuevoIngreso.resources
 C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.FormModificarPrecios.resources
 C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.FormNuevaVenta.resources
+C:\Users\Usuario\source\repos\Mueblerize\obj\Debug\net8.0-windows\Mueblerize.FormVerDetallesVenta.resources

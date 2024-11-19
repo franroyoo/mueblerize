@@ -35,7 +35,7 @@ namespace Mueblerize
             {
                 Name = "btnEliminar",
                 HeaderText = "Eliminar",
-                Text = "Eliminar",
+                Text = "ELIMINAR",
                 UseColumnTextForButtonValue = true
             };
 

@@ -27,5 +27,6 @@ namespace Mueblerize.Modelo
             Email = email;
         }
 
+        public abstract string ObtenerDatos();
     }
 }

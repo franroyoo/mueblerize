@@ -110,6 +110,7 @@
             dataGridViewMueblesVenta.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewMueblesVenta.Size = new Size(598, 479);
             dataGridViewMueblesVenta.TabIndex = 25;
+            dataGridViewMueblesVenta.CellClick += dataGridViewMueblesVenta_CellClick;
             // 
             // label2
             // 

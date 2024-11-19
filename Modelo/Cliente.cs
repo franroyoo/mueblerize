@@ -16,5 +16,16 @@ namespace Mueblerize.Modelo
             this.NumeroCliente = NumeroCliente;
             this.FechaRegistro = FechaRegistro;
         }
+
+        public override string ObtenerDatos()
+        {
+            return $"Nombre: {Nombre}\n" +
+                   $"Apellido: {Apellido}\n" +
+                   $"Teléfono: {Telefono}\n" +
+                   $"Dirección: {Direccion}\n" +
+                   $"Email: {Email}\n" +
+                   $"Fecha de Registro: {FechaRegistro:dd/MM/yyyy}";
+        }
+
     }
 }

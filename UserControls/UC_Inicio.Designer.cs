@@ -50,11 +50,11 @@
             label1.AutoSize = true;
             label1.Font = new Font("Franklin Gothic Medium Cond", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(64, 38, 36);
-            label1.Location = new Point(652, 638);
+            label1.Location = new Point(695, 636);
             label1.Name = "label1";
-            label1.Size = new Size(640, 61);
+            label1.Size = new Size(562, 61);
             label1.TabIndex = 1;
-            label1.Text = "SOLUCIONES PARA TU MUEBLERÍA";
+            label1.Text = "GESTIÓN PARA TU MUEBLERÍA";
             // 
             // UC_Inicio
             // 
