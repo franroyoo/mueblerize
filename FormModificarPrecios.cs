@@ -56,6 +56,8 @@ namespace Mueblerize
                 ReferenciaUC_Inventario.diccionarioPrecioTipoMadera[TipoMadera.Algarrobo] = ValidarYConvertirPrecio(textBoxPrecioAlgarrobo.Text, TipoMadera.Algarrobo);
                 ReferenciaUC_Inventario.diccionarioPrecioTipoMadera[TipoMadera.Pino] = ValidarYConvertirPrecio(textBoxPrecioPino.Text, TipoMadera.Pino);
 
+                this.Close();
+
                 MessageBox.Show("Los precios han sido actualizados correctamente.", "Actualización de precios", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)

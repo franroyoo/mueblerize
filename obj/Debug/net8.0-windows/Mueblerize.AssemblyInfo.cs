@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mueblerize")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd30e88ba446e7f1e2024056a9dcaa9237ef5421")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a13a073d71f0c10a587a4f41687c5c8136ab772")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mueblerize")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mueblerize")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

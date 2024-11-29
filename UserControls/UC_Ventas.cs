@@ -14,16 +14,15 @@ namespace Mueblerize.UserControls
     public partial class UC_Ventas : UserControl
     {
         public UC_Inventario UC_Inventario { get; set; }
-        public UC_Clientes UC_Clientes { get; set; }
+        public UC_Clientes ReferenciaUC_Clientes { get; set; }
 
         public List<Venta> Ventas { get; set; } = new List<Venta>();
-        public UC_Ventas(UC_Inventario UC_Inventario, UC_Clientes UC_Clientes)
+        public UC_Ventas(UC_Inventario UC_Inventario)
         {
 
             InitializeComponent();
 
             this.UC_Inventario = UC_Inventario;
-            this.UC_Clientes = UC_Clientes;
 
             // Armar datagridview
 
@@ -61,9 +60,30 @@ namespace Mueblerize.UserControls
             this.Ventas.Add(venta);
         }
 
+        public void ActualizarDetallesClienteSiExisteVentaAsociada(Cliente cliente)
+        {
+            var posibleVenta = Ventas.Find(venta => venta.Cliente.DNI.Equals(cliente.DNI));
+
+            if (posibleVenta != null)
+            {
+                // TODO 10:05 AM: REFLEJAR CAMBIOS EN EL DATAGRIDVIEW
+                // La venta existe, por lo tanto tengo que actualiza los datos asociados
+
+                posibleVenta.Cliente = cliente;
+
+                // Reflejar el cambio en el datagridview
+
+                dataGridViewVentas.Rows.Clear();
+
+                foreach (var venta in Ventas)
+                {
+                    dataGridViewVentas.Rows.Add(venta.Cliente.Nombre, venta.Cliente.Apellido, venta.Cliente.DNI, venta.Fecha);
+                }
+            }
+        }
         private void buttonNuevaVenta_Click(object sender, EventArgs e)
         {
-            FormNuevaVenta formNuevaVenta = new FormNuevaVenta(UC_Inventario, UC_Clientes);
+            FormNuevaVenta formNuevaVenta = new FormNuevaVenta(UC_Inventario, ReferenciaUC_Clientes);
             formNuevaVenta.ReferenciaUC_Ventas = this;
             formNuevaVenta.Show();
         }
@@ -73,7 +93,7 @@ namespace Mueblerize.UserControls
         {
             if (e.RowIndex >= 0)
             {
-                if (dataGridViewVentas.Columns[e.ColumnIndex].Name == "btnVerDetalles")
+                if (e.ColumnIndex >= 0 && dataGridViewVentas.Columns[e.ColumnIndex].Name == "btnVerDetalles")
                 {
                     // Obtengo la fecha de venta (unica para cada venta)
                     var fechaVenta = dataGridViewVentas.Rows[e.RowIndex].Cells["FechaVenta"].Value;

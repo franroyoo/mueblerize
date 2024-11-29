@@ -81,7 +81,7 @@
             dataGridViewClientes.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.Bisque;
             dataGridViewClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewClientes.BackgroundColor = Color.Bisque;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -112,6 +112,7 @@
             dataGridViewClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewClientes.Size = new Size(1016, 694);
             dataGridViewClientes.TabIndex = 15;
+            dataGridViewClientes.CellClick += dataGridViewClientes_CellClick;
             // 
             // UC_Clientes
             // 

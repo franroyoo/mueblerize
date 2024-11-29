@@ -6,14 +6,24 @@ namespace Mueblerize
     {
         private static int DEFAULT_FONT_SIZE = 18;
         private static int HOVERED_FONT_SIZE = 22;
-        public UC_Clientes UC_Clientes {get;set; } = new UC_Clientes();
-        public UC_Ventas UC_Ventas {get;set; }
+        public UC_Clientes UC_Clientes { get; set; } = new UC_Clientes();
+        
         public UC_Inventario UC_Inventario { get; set; } = new UC_Inventario();
+        public UC_Ventas UC_Ventas { get; set; }
         public Form1()
         {
             InitializeComponent();
 
-            UC_Ventas = new UC_Ventas(UC_Inventario, UC_Clientes);
+
+            // TODO 9:01 AM: ARREGLAR TODO EL BARDO CON LAS DEPENDENCIAS ENTRE USER CONTROL
+
+            // El funcionamiento de algunos UserControl depende de la informacion que alojan otros.
+
+            UC_Ventas = new UC_Ventas(UC_Inventario);
+            UC_Ventas.ReferenciaUC_Clientes = UC_Clientes;
+
+            UC_Clientes.ReferenciaUC_Ventas = UC_Ventas;
+
             UC_Inicio inicio = new UC_Inicio();
             AgregarUserControl(inicio);
         }

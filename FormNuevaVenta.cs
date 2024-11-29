@@ -165,8 +165,6 @@ namespace Mueblerize
         private void buttonRegistrarVenta_Click(object sender, EventArgs e)
         {
 
-
-
             try
             {
                 if (itemsSeleccionadosUsuario.Count == 0) throw new Exception("ERROR: No se ha seleccionado ningun mueble para vender");
@@ -185,6 +183,10 @@ namespace Mueblerize
                 UC_Inventario.ActualizarInventario(itemsSeleccionadosUsuario);
 
                 this.Close();
+
+                // Informar al usuario que la venta se hizo correctamente
+
+                MessageBox.Show("Venta realizada correctamente", "VENTA REGISTRADA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

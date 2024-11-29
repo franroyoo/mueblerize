@@ -165,6 +165,15 @@ namespace Mueblerize
 
         private void buttonRegistrarIngreso_Click(object sender, EventArgs e)
         {
+
+            // Si no hay items agregados, no hay ingreso
+
+            if (itemsInventario.Count == 0)
+            {
+                MessageBox.Show("Ningun mueble fue agregado para ser ingresado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             var confirmarRegistrarIngreso = MessageBox.Show("¿Confirmar nuevo ingreso de muebles?", "Confirmar ingreso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirmarRegistrarIngreso == DialogResult.Yes)

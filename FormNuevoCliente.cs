@@ -7,6 +7,7 @@ namespace Mueblerize
 {
     public partial class FormNuevoCliente : Form
     {
+        // ReferenciaUC_Clientes es necesario porque necesito pasar información del Form al UserControl
         public UC_Clientes ReferenciaUC_Clientes { get; set; }
         public FormNuevoCliente()
         {
@@ -68,7 +69,11 @@ namespace Mueblerize
                 if (!EsEdadValida(edadTexto)) throw new Exception("Error en el campo EDAD: rango de edad no válido");
                 if (!EsTelefonoValido(telefono)) throw new Exception("Error en el campo TELEFONO: mínimo 10 caracteres y máximo 15");
                 if (!EsDireccionValida(direccion)) throw new Exception("Error en el campo DIRECCIÓN: mínimo 7 caracteres y máximo 25");
-                if (!EsEmailValido(email)) throw new Exception("Error en el campo EMAIL: formato no válido");
+                if (!EsEmailValido(email)) throw new Exception("Error en el campo EMAIL: email debe ser de tipo GMAIL o HOTMAIL");
+
+                this.Close();
+
+                MessageBox.Show("El cliente ha sido agregado correctamente.", "CLIENTE REGISTRADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception e)
             {
@@ -79,7 +84,7 @@ namespace Mueblerize
         }
 
         // Condiciones para que los campos sean VÁLIDOS
-        private bool EsNombreValido(string nombre) => nombre.Length >= 3 && nombre.Length <= 25;
+        private bool EsNombreValido(string nombre) => nombre.Length >= 3 && nombre.Length <= 25 && !nombre.Any(char.IsDigit);
 
         private bool EsApellidoValido(string nombre) => nombre.Length >= 3 && nombre.Length <=25;
         private bool EsDniValido(string dni) => dni.Length == 8 && dni.All(char.IsDigit);
@@ -100,6 +105,6 @@ namespace Mueblerize
 
         private bool EsDireccionValida(string direccion) => direccion.Length >= 7 && direccion.Length <= 25;
 
-        private bool EsEmailValido(string email) => email.Contains('@') && email.Length >= 5;
+        private bool EsEmailValido(string email) => (email.EndsWith("@hotmail.com") || email.EndsWith("@gmail.com")) && email.Length >= 15;
     }
 }
